@@ -15,16 +15,17 @@
                     </a>
                 </li>
                 <li class="breadcrumb-item"><a href="#">Pelanggan</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Edit Pelanggan</li>
             </ol>
         </nav>
         <div class="d-flex justify-content-between w-100 flex-wrap">
             <div class="mb-3 mb-lg-0">
-                <h1 class="h4">Data Pelanggan</h1>
-                <p class="mb-0">List data seluruh pelanggan</p>
+                <h1 class="h4">Edit Pelanggan</h1>
+                <p class="mb-0">Form untuk mengedit data pelanggan.</p>
             </div>
             <div>
-                <a href="{{ route('pelanggan.create') }}" class="btn btn-success text-white"><i
-                        class="far fa-question-circle me-1"></i> Tambah Pelanggan</a>
+                <a href="{{ route('pelanggan.index') }}" class="btn btn-primary"><i class="far fa-question-circle me-1"></i>
+                    Kembali</a>
             </div>
         </div>
     </div>
@@ -33,7 +34,7 @@
         <div class="col-12 mb-4">
             <div class="card border-0 shadow components-section">
                 <div class="card-body">
-                    <form action="{{route('pelanggan.update', $dataPelanggan->pelanggan_id)}}" method="POST">
+                    <form action="{{ route('pelanggan.update', $dataPelanggan->pelanggan_id) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="row mb-4">
@@ -41,13 +42,15 @@
                                 <!-- First Name -->
                                 <div class="mb-3">
                                     <label for="first_name" class="form-label">First name</label>
-                                    <input type="text" name="first_name" id="first_name" class="form-control" value="{{ $dataPelanggan->first_name }}" required>
+                                    <input type="text" name="first_name" id="first_name" class="form-control"
+                                        value="{{ $dataPelanggan->first_name }}" required>
                                 </div>
 
                                 <!-- Last Name -->
                                 <div class="mb-3">
                                     <label for="last_name" class="form-label">Last name</label>
-                                    <input type="text" name="last_name" id="last_name" class="form-control" value="{{ $dataPelanggan->last_name }}" required>
+                                    <input type="text" name="last_name" id="last_name" class="form-control"
+                                        value="{{ $dataPelanggan->last_name }}" required>
                                 </div>
                             </div>
 
@@ -55,7 +58,8 @@
                                 <!-- Birthday -->
                                 <div class="mb-3">
                                     <label for="birthday" class="form-label">Birthday</label>
-                                    <input type="date" name="birthday" id="birthday" class="form-control" value="{{ $dataPelanggan->birthday }}">
+                                    <input type="date" name="birthday" id="birthday" class="form-control"
+                                        value="{{ $dataPelanggan->birthday }}">
                                 </div>
 
                                 <!-- Gender -->
@@ -63,8 +67,10 @@
                                     <label for="gender" class="form-label">Gender</label>
                                     <select id="gender" name="gender" class="form-select">
                                         <option selected>Gender</option>
-                                        <option value="Male" {{$dataPelanggan->gender == 'Male' ? 'Selected' : ''}}   >Male</option>
-                                        <option value="Female" {{$dataPelanggan->gender == 'Female' ? 'Selected' : ''}}   >Female</option>
+                                        <option value="Male" {{ $dataPelanggan->gender == 'Male' ? 'Selected' : '' }}>Male
+                                        </option>
+                                        <option value="Female" {{ $dataPelanggan->gender == 'Female' ? 'Selected' : '' }}>
+                                            Female</option>
                                         <option value="Other">Other</option>
                                     </select>
                                 </div>
@@ -74,13 +80,15 @@
                                 <!-- Email -->
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email</label>
-                                    <input type="text" name="email" id="email" class="form-control" value="{{ $dataPelanggan->email }}" required>
+                                    <input type="text" name="email" id="email" class="form-control"
+                                        value="{{ $dataPelanggan->email }}" required>
                                 </div>
 
                                 <!-- Phone -->
                                 <div class="mb-3">
                                     <label for="phone" class="form-label">Phone</label>
-                                    <input type="text" name="phone" id="phone" class="form-control" value="{{ $dataPelanggan->phone }}">
+                                    <input type="text" name="phone" id="phone" class="form-control"
+                                        value="{{ $dataPelanggan->phone }}">
                                 </div>
 
                                 <!-- Buttons -->
@@ -97,5 +105,4 @@
             </div>
         </div>
     </div>
-
 @endsection
